@@ -18,18 +18,20 @@ class Item extends Component {
     render() {
         const url = "/images/" + this.props.item.imageURL;
         return (
-            <div className='pizzaItem'>
-                <div className='crop'>
+            <div className='col-md-4'>
+                <div className="product-grid">
+				<div className='crop'>
                     <img src={url} />
                 </div>
-                <p className="info">{this.props.item.name}, ${this.props.item.price} </p>
-                <div className='button' onClick={() => this.toggleCart(this.props.item)}>
+                <h3 className="title">{this.props.item.name}, ${this.props.item.price} </h3>
+                <div className='btn' onClick={() => this.toggleCart(this.props.item)}>
                     {this.props.item.is_added ? (
-                        <b>REMOVE</b>
+                        <button className="btn btn-danger">REMOVE</button>
                     ):(
-                        <b>ADD</b>
+                        <button className="btn btn-primary">ADD</button>
                     )}
                 </div>
+				</div>
             </div>
         )
     }

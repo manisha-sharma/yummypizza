@@ -62,7 +62,22 @@ export default class PizzaApp extends Component {
 
         this.fetcher();
     }
+	
+	
+	// remove from cart
+    onRemoveFromCartItem = (id) => {
+        fetch('/api/remove/' + id, {
+            method: 'PUT',
+            body: JSON.stringify(id),
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
 
+        this.fetcher();
+    }
+	
 
 	render() {
 		return (
@@ -76,7 +91,7 @@ export default class PizzaApp extends Component {
                     />}
                 />
                 <Route exact path='/cart' render={() =>
-                    <Cart cartPizzas={this.state.pizzas}/>
+                    <Cart cartPizzas={this.state.pizzas} onRemoveFromCart={this.onRemoveFromCart} OnRemoveCartItem={this.onRemoveFromCartItem}/>
                 } />
                 <Route exact path='/ordered' render={() =>
                     <Ordered 

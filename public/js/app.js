@@ -1952,7 +1952,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/* topbar */\n.topbar {\n    height: 50px;\n    line-height: 50px;\n    width: 100%;\n    vertical-align: middle;\n    text-align: center;\n    background-color: rgb(13, 138, 13);\n    color: white;\n    margin: 0;\n    padding: 0;\n    font-family: sans-serif;\n    font-size: 40px;\n    font-weight: bolder;\n    margin-bottom: 5px;\n}\n\n\n/* menu */\n.wrapper {\n    max-width: 960px;\n    margin: 0 auto;\n    overflow: auto;\n}\n\n#container {\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    grid-gap: 10px;\n}\n\n.pizzaItem {\n    text-align: center;\n    box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3); \n    min-height: 250px;\n    border-radius: 5px;\n    padding: 10px;\n}\n\n.info {\n    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;\n    font-weight: 800;\n    padding: 2px;\n}\n\n.crop img {\n    width: 100%;\n    height: 300px;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n.button, .orderbutton {\n    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;\n    float: right;\n    background: rgb(13, 138, 13);\n    color: white;\n    height: 35px; \n    line-height: 35px;\n    border-radius: 5px;\n    padding: 2px 8px;\n}\n\n.button:hover, .orderbutton:hover, .backbutton:hover {\n    background-image: linear-gradient(rgb(57, 235, 57), rgb(13, 138, 13));\n    cursor: pointer;\n}\n\n.orderbutton {\n    margin: 20px;\n}\n\n.backbutton {\n    width: 20%;\n    margin: 15px auto;\n    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;\n    background: rgb(8, 83, 8);\n    color: white;\n    height: 35px;\n    line-height: 35px;\n    border-radius: 5px;\n    padding: 2px 8px;\n    text-align: center;\n}\n\n\n/* responsive */\n@media (max-width: 820px) {\n    #container {\n        grid-template-columns: 1fr 1fr;\n    }\n}\n\n@media (max-width: 520px) {\n    #container {\n        grid-template-columns: 1fr;\n    }\n}", ""]);
+exports.push([module.i, "/* topbar */\n.topbar {\n    height: 50px;\n    line-height: 50px;\n    width: 100%;\n    vertical-align: middle;\n    text-align: center;\n    background-color: rgb(13, 138, 13);\n    color: white;\n    margin: 0;\n    padding: 0;\n    font-family: sans-serif;\n    font-size: 40px;\n    font-weight: bolder;\n    margin-bottom: 5px;\n}\n\n\n/* menu */\n.wrapper {\n    max-width: 960px;\n    margin: 0 auto;\n    overflow: auto;\n}\n\n#container {\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    grid-gap: 10px;\n}\n\n.pizzaItem {\n    text-align: center;\n    box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3); \n    min-height: 250px;\n    border-radius: 5px;\n    padding: 10px;\n}\n.product-grid{font-family:Raleway,sans-serif;text-align:center;margin:0 0 20px;border:1px solid rgba(0,0,0,.1);overflow:hidden;position:relative;z-index:1}\n.info {\n    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;\n    font-weight: 800;\n    padding: 2px;\n}\nh3.title {\n    font-size: 22px;\n    margin-top: 15px;\n}\ndiv.btn{margin-bottom: 15px;}\n.crop img {\n    width: 100%;\n    height: 300px;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n.button, .orderbutton {\n    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;\n    float: right;\n    background: rgb(13, 138, 13);\n    color: white;\n    height: 35px; \n    line-height: 35px;\n    border-radius: 5px;\n    padding: 2px 8px;\n}\n\n.button:hover, .orderbutton:hover, .backbutton:hover {\n    background-image: linear-gradient(rgb(57, 235, 57), rgb(13, 138, 13));\n    cursor: pointer;\n}\n\n.orderbutton {\n    margin: 20px;\n}\n\n.backbutton {\n    width: 20%;\n    margin: 15px auto;\n    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;\n    background: rgb(8, 83, 8);\n    color: white;\n    height: 35px;\n    line-height: 35px;\n    border-radius: 5px;\n    padding: 2px 8px;\n    text-align: center;\n}\n\n\n/* responsive */\n@media (max-width: 820px) {\n    #container {\n        grid-template-columns: 1fr 1fr;\n    }\n}\n\n@media (max-width: 520px) {\n    #container {\n        grid-template-columns: 1fr;\n    }\n}", ""]);
 
 // exports
 
@@ -53425,7 +53425,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "fetcher", function () {
-      fetch('/public/api/pizzas', {
+      fetch('/api/pizzas', {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -53440,7 +53440,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "onAddToCart", function (item) {
-      fetch('/public/api/add/' + item.id, {
+      fetch('/api/add/' + item.id, {
         method: 'PUT',
         body: JSON.stringify(item),
         headers: {
@@ -53453,7 +53453,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "onRemoveFromCart", function (item) {
-      fetch('/public/api/remove/' + item.id, {
+      fetch('/api/remove/' + item.id, {
         method: 'PUT',
         body: JSON.stringify(item),
         headers: {
@@ -53466,7 +53466,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "onRemoveFromCartItem", function (id) {
-      fetch('/public/api/remove/' + id, {
+      fetch('/api/remove/' + id, {
         method: 'PUT',
         body: JSON.stringify(id),
         headers: {
