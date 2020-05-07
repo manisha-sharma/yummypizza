@@ -25,7 +25,7 @@ export default class PizzaApp extends Component {
 
 	// grab posts from laravel backend
 	fetcher = () => {
-		fetch('/api/pizzas',  {
+		fetch('/public/api/pizzas',  {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
