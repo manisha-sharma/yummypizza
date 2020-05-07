@@ -37,7 +37,7 @@ export default class PizzaApp extends Component {
     
     // add to cart
     onAddToCart = (item) => {
-        fetch('/api/add/' + item.id, {
+        fetch('/public/api/add/' + item.id, {
             method: 'PUT',
             body: JSON.stringify(item),
             headers : { 

@@ -53425,7 +53425,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "fetcher", function () {
-      fetch('/api/pizzas', {
+      fetch('/public/api/pizzas', {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -53440,7 +53440,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "onAddToCart", function (item) {
-      fetch('/api/add/' + item.id, {
+      fetch('/public/api/add/' + item.id, {
         method: 'PUT',
         body: JSON.stringify(item),
         headers: {
@@ -53456,19 +53456,6 @@ function (_Component) {
       fetch('/api/remove/' + item.id, {
         method: 'PUT',
         body: JSON.stringify(item),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      });
-
-      _this.fetcher();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onRemoveFromCartItem", function (id) {
-      fetch('/api/remove/' + id, {
-        method: 'PUT',
-        body: JSON.stringify(id),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -53509,9 +53496,7 @@ function (_Component) {
         path: "/cart",
         render: function render() {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            cartPizzas: _this2.state.pizzas,
-            onRemoveFromCart: _this2.onRemoveFromCart,
-            OnRemoveCartItem: _this2.onRemoveFromCartItem
+            cartPizzas: _this2.state.pizzas
           });
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
