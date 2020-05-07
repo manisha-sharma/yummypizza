@@ -51,7 +51,7 @@ export default class PizzaApp extends Component {
 
     // remove from cart
     onRemoveFromCart = (item) => {
-        fetch('/api/remove/' + item.id, {
+        fetch('/public/api/remove/' + item.id, {
             method: 'PUT',
             body: JSON.stringify(item),
             headers : { 
