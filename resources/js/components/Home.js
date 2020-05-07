@@ -12,18 +12,19 @@ class Home extends Component {
     render() {
         return (
             <div className='wrapper'>
-                <div className="container">
-					<div className="row">
-						{this.props.pizzas.map((item, idx) => (
-							<Item 
-								item={item} 
-								key={idx} 
-								onAddToCart={this.props.onAddToCart}
-								onRemoveFromCart={this.props.onRemoveFromCart} 
-							/>
-						))}
-					</div>
-				</div>
+                <div id="container">
+                    {this.props.pizzas.map((item, idx) => (
+                        <Item 
+                            item={item} 
+                            key={idx} 
+                            onAddToCart={this.props.onAddToCart}
+                            onRemoveFromCart={this.props.onRemoveFromCart} 
+                        />
+                    ))}
+                </div>
+                <Link to='/cart'>
+                    <div className="orderbutton">CHECKOUT</div>
+                </Link>
             </div>
         )
     }

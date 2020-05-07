@@ -18,14 +18,20 @@ class Ordered extends Component {
 
     render () {
         return (
-            <div className='done'>
-                You order is received!
-                <Link to='/' style={{ textDecoration: 'none' }}>
-                    <div className='backbutton'>
-                        BACK TO MENU
-                    </div>
-                </Link>
-            </div>
+			<>
+			<div className="row">
+				<div className="col-12">
+					<div className="jumbotron text-center">
+						<h1 className="display-3">Thank You!</h1>
+							<p className="lead">Your order is recieved.</p>
+						<hr></hr>
+						<p className="lead">
+							<Link to='/' style={{ textDecoration: 'none' }} className="btn btn-primary btn-sm" role="button">Continue Shopping</Link>
+						</p>
+					</div>
+				</div>
+			</div>
+			</>
         )
     }
 }
