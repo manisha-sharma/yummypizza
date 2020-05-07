@@ -12,6 +12,7 @@ class Home extends Component {
     render() {
         return (
             <div className='wrapper'>
+			{pizzas}
                 <div className="container">
 					<div className="row">
 						{this.props.pizzas.map((item, idx) => (
