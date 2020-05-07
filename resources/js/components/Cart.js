@@ -92,6 +92,7 @@ class Cart extends Component {
 												<td></td>
 												<td></td>
 												<td></td>
+												<td></td>
 												<td><strong>Total</strong></td>
 												<td className="text-right total"><strong>${tot.toFixed(2)}</strong></td>
 											</tr>
