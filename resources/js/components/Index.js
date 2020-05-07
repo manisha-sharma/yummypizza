@@ -25,7 +25,7 @@ export default class PizzaApp extends Component {
 
 	// grab posts from laravel backend
 	fetcher = () => {
-		fetch('/api/pizzas',  {
+		fetch('/public/api/pizzas',  {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -62,22 +62,7 @@ export default class PizzaApp extends Component {
 
         this.fetcher();
     }
-	
-	
-	// remove from cart
-    onRemoveFromCartItem = (id) => {
-        fetch('/api/remove/' + id, {
-            method: 'PUT',
-            body: JSON.stringify(id),
-            headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        });
 
-        this.fetcher();
-    }
-	
 
 	render() {
 		return (
@@ -91,7 +76,7 @@ export default class PizzaApp extends Component {
                     />}
                 />
                 <Route exact path='/cart' render={() =>
-                    <Cart cartPizzas={this.state.pizzas} onRemoveFromCart={this.onRemoveFromCart} OnRemoveCartItem={this.onRemoveFromCartItem}/>
+                    <Cart cartPizzas={this.state.pizzas}/>
                 } />
                 <Route exact path='/ordered' render={() =>
                     <Ordered 
