@@ -53085,8 +53085,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _styles_cart_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../styles/cart.css */ "./resources/styles/cart.css");
-/* harmony import */ var _styles_cart_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_cart_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Item */ "./resources/js/components/Item.js");
+/* harmony import */ var _styles_cart_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../styles/cart.css */ "./resources/styles/cart.css");
+/* harmony import */ var _styles_cart_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_cart_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53111,6 +53112,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var Cart =
 /*#__PURE__*/
 function (_Component) {
@@ -53125,12 +53127,32 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {});
 
+    _defineProperty(_assertThisInitialized(_this), "updatetotal", function (event) {
+      console.log(jQuery('.quantity').val());
+      var sum = 0;
+      $(".quantity").each(function (index) {
+        console.log(index + ": " + $(this).val() + ": " + $(this).data('price'));
+        sum += $(this).val() * $(this).data('price');
+        $('.subtotal').text('$' + sum);
+        $('.total').text('$' + sum);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "toggleCart", function (event) {
+      var item = event.currentTarget.getAttribute('data-itemdata');
+      console.log(item);
+
+      _this.props.OnRemoveCartItem(item);
+    });
+
     return _this;
   }
 
   _createClass(Cart, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var addedPizzas = this.props.cartPizzas.filter(function (p) {
         return p.is_added;
       });
@@ -53141,29 +53163,101 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "flexcart"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "cartHeader"
-      }, "YOUR CART (", addedPizzas.length, ") "), addedPizzas.map(function (item, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "cartItem",
-          key: idx
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "info"
-        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "freq"
-        }, "$", item.price));
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "cost"
-      }, "YOUR TOTAL: $", tot.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/ordered"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "orderbutton"
-      }, "PLACE ORDER")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "orderbutton"
-      }, "BACK"))));
+        className: "container mb-4"
+      }, function () {
+        if (addedPizzas.length > 0) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "col-12"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "table-responsive"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+            className: "table table-striped"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+            scope: "col"
+          }, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+            scope: "col"
+          }, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+            scope: "col"
+          }, "Pizza"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+            scope: "col",
+            className: "text-center"
+          }, "Quantity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+            scope: "col",
+            className: "text-right"
+          }, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, addedPizzas.map(function (item, idx) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+              key: idx
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, idx + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              src: "/images/" + item.imageURL,
+              className: "image-fluid",
+              width: "100",
+              height: "100"
+            }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+              className: "form-control quantity",
+              "data-price": item.price,
+              type: "number",
+              defaultValue: "1",
+              onChange: _this2.updatetotal
+            })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+              className: "text-right"
+            }, "$", item.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+              className: "text-right"
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+              className: "btn btn-sm btn-danger",
+              onClick: _this2.toggleCart,
+              "data-itemdata": item.id
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+              className: "fa fa-trash"
+            }), " "), " "));
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Sub-Total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+            className: "text-right subtotal"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+            type: "hidden",
+            name: "subtotal",
+            id: "subtotal",
+            defaultValue: tot
+          }), "$", tot.toFixed(2))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Shipping"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+            className: "text-right"
+          }, "$0.00")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Total")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+            className: "text-right total"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "$", tot.toFixed(2)))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "col mb-2"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "col-sm-12  col-md-6"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/",
+            className: "btn btn-block btn-light"
+          }, "Continue Shopping")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "col-sm-12 col-md-6 text-right"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/ordered",
+            className: "btn btn-lg btn-block btn-primary text-uppercase"
+          }, "Checkout")))));
+        } else {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "col-12"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "jumbotron text-center"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            className: "lead"
+          }, "Your Cart is empty."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            className: "lead"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/",
+            style: {
+              textDecoration: 'none'
+            },
+            className: "btn btn-primary btn-sm",
+            role: "button"
+          }, "Continue Shopping")))));
+        }
+      }()));
     }
   }]);
 
@@ -53245,7 +53339,9 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "container"
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
       }, this.props.pizzas.map(function (item, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item__WEBPACK_IMPORTED_MODULE_2__["default"], {
           item: item,
@@ -53253,11 +53349,7 @@ function (_Component) {
           onAddToCart: _this2.props.onAddToCart,
           onRemoveFromCart: _this2.props.onRemoveFromCart
         });
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/cart"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "orderbutton"
-      }, "CHECKOUT")));
+      }))));
     }
   }]);
 
@@ -53333,7 +53425,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "fetcher", function () {
-      fetch('/api/pizzas', {
+      fetch('/public/api/pizzas', {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -53348,7 +53440,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "onAddToCart", function (item) {
-      fetch('/api/add/' + item.id, {
+      fetch('/public/api/add/' + item.id, {
         method: 'PUT',
         body: JSON.stringify(item),
         headers: {
@@ -53361,9 +53453,22 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "onRemoveFromCart", function (item) {
-      fetch('/api/remove/' + item.id, {
+      fetch('/public/api/remove/' + item.id, {
         method: 'PUT',
         body: JSON.stringify(item),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+
+      _this.fetcher();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onRemoveFromCartItem", function (id) {
+      fetch('/public/api/remove/' + id, {
+        method: 'PUT',
+        body: JSON.stringify(id),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -53404,7 +53509,9 @@ function (_Component) {
         path: "/cart",
         render: function render() {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Cart__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            cartPizzas: _this2.state.pizzas
+            cartPizzas: _this2.state.pizzas,
+            onRemoveFromCart: _this2.onRemoveFromCart,
+            OnRemoveCartItem: _this2.onRemoveFromCartItem
           });
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
@@ -53501,19 +53608,25 @@ function (_Component) {
 
       var url = "/images/" + this.props.item.imageURL;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pizzaItem"
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "product-grid"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "crop"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: url
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "info"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "title"
       }, this.props.item.name, ", $", this.props.item.price, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "button",
+        className: "btn",
         onClick: function onClick() {
           return _this2.toggleCart(_this2.props.item);
         }
-      }, this.props.item.is_added ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "REMOVE") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "ADD")));
+      }, this.props.item.is_added ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-danger"
+      }, "REMOVE") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary"
+      }, "ADD"))));
     }
   }]);
 
@@ -53603,16 +53716,26 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "done"
-      }, "You order is received!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "jumbotron text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "display-3"
+      }, "Thank You!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "lead"
+      }, "Your order is recieved."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "lead"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         style: {
           textDecoration: 'none'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "backbutton"
-      }, "BACK TO MENU")));
+        },
+        className: "btn btn-primary btn-sm",
+        role: "button"
+      }, "Continue Shopping"))))));
     }
   }]);
 
@@ -53634,8 +53757,10 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _styles_home_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../styles/home.css */ "./resources/styles/home.css");
-/* harmony import */ var _styles_home_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_home_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _styles_home_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../styles/home.css */ "./resources/styles/home.css");
+/* harmony import */ var _styles_home_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_home_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Item */ "./resources/js/components/Item.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53655,6 +53780,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -53685,9 +53812,28 @@ function (_Component) {
   _createClass(Topbar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "topbar"
-      }, "PIZZAS!");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar navbar-expand-md navbar-dark bg-dark"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/",
+        className: "navbar-brand"
+      }, "YUMMY PIZZA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "collapse navbar-collapse justify-content-end",
+        id: "navbarsExampleDefault"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/cart",
+        className: "btn btn-primary btn-sm ml-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-shopping-cart"
+      }), " Cart")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "jumbotron text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "jumbotron-heading"
+      }, "YUMMY PIZZA STORE"))));
     }
   }]);
 
