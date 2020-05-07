@@ -53190,7 +53190,7 @@ function (_Component) {
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
               key: idx
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, idx + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-              src: "/images/" + item.imageURL,
+              src: "/public/images/" + item.imageURL,
               className: "image-fluid",
               width: "100",
               height: "100"
@@ -53591,7 +53591,7 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var url = "/images/" + this.props.item.imageURL;
+      var url = "/public/images/" + this.props.item.imageURL;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
