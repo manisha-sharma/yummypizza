@@ -60,7 +60,7 @@ class Cart extends Component {
 												return (
 													<tr key={idx}>
 														<td>{idx+1}</td>
-														<td><img src={"/public/images/"+item.imageURL} className="image-fluid" width="100" height="100"/> </td>
+														<td><img src={"/images/"+item.imageURL} className="image-fluid" width="100" height="100"/> </td>
 														<td>{item.name}</td>
 														<td><input className="form-control quantity" data-price={item.price} type="number" defaultValue="1" onChange={this.updatetotal}/></td>
 														<td className="text-right">${item.price}</td>

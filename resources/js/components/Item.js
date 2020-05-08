@@ -16,7 +16,7 @@ class Item extends Component {
     }
 
     render() {
-        const url = "/public/images/" + this.props.item.imageURL;
+        const url = "/images/" + this.props.item.imageURL;
         return (
             <div className='col-md-4'>
                 <div className="product-grid">
