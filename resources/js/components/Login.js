@@ -17,7 +17,7 @@ class Login extends Component {
    
         $.ajax({
 			type: 'POST',
-			url: '/public/api/checkuser',
+			url: '/api/checkuser',
 			dataType: 'json',
 			data: $('.checkoutform').serialize(),
 			context: this,
