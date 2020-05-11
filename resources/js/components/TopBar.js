@@ -16,7 +16,10 @@ class Topbar extends Component {
 					<div className="container">
 						<Link to='/' className="navbar-brand">YUMMY PIZZA</Link>
 
-						<div className="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+						<div className="justify-content-end" id="navbarsExampleDefault">
+								<Link to='/login'  className="btn btn-primary btn-sm ml-3 changelabel">	
+									<i className="fa fa-user"></i> Past Orders
+								</Link>
 								<Link to='/cart'  className="btn btn-primary btn-sm ml-3">
 									<i className="fa fa-shopping-cart"></i> Cart
 								</Link>

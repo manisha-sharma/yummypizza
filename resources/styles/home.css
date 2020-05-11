@@ -85,7 +85,7 @@ div.btn{margin-bottom: 15px;}
     padding: 2px 8px;
     text-align: center;
 }
-
+#showdata .table td, #showdata .table th{padding-left:30px}
 
 /* responsive */
 @media (max-width: 820px) {

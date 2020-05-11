@@ -4,7 +4,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Topbar from './TopBar';
 import Home from './Home';
 import Cart from './Cart';
+import Checkout from './Checkout';
+import Login from './Login';
 import Ordered from './Ordered';
+import OrderHistory from './OrderHistory';
 
 export default class PizzaApp extends Component {
 
@@ -25,7 +28,7 @@ export default class PizzaApp extends Component {
 
 	// grab posts from laravel backend
 	fetcher = () => {
-		fetch('/public/api/pizzas',  {
+		fetch('/api/pizzas',  {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -37,7 +40,7 @@ export default class PizzaApp extends Component {
     
     // add to cart
     onAddToCart = (item) => {
-        fetch('/public/api/add/' + item.id, {
+        fetch('/api/add/' + item.id, {
             method: 'PUT',
             body: JSON.stringify(item),
             headers : { 
@@ -51,7 +54,7 @@ export default class PizzaApp extends Component {
 
     // remove from cart
     onRemoveFromCart = (item) => {
-        fetch('/public/api/remove/' + item.id, {
+        fetch('/api/remove/' + item.id, {
             method: 'PUT',
             body: JSON.stringify(item),
             headers : { 
@@ -62,7 +65,22 @@ export default class PizzaApp extends Component {
 
         this.fetcher();
     }
+	
+	
+	// remove from cart
+    onRemoveFromCartItem = (id) => {
+        fetch('/api/remove/' + id, {
+            method: 'PUT',
+            body: JSON.stringify(id),
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
 
+        this.fetcher();
+    }
+	
 
 	render() {
 		return (
@@ -76,12 +94,22 @@ export default class PizzaApp extends Component {
                     />}
                 />
                 <Route exact path='/cart' render={() =>
-                    <Cart cartPizzas={this.state.pizzas}/>
+                    <Cart cartPizzas={this.state.pizzas} onRemoveFromCart={this.onRemoveFromCart} OnRemoveCartItem={this.onRemoveFromCartItem}/>
                 } />
                 <Route exact path='/ordered' render={() =>
                     <Ordered 
                         pizzas={this.state.pizzas}
                         onRemoveFromCart={this.onRemoveFromCart} />
+                } />
+				<Route exact path='/checkout' render={() =>
+                    <Checkout 
+                        pizzas={this.state.pizzas} />
+                } />
+				<Route exact path='/login' render={() =>
+                    <Login />
+                } />
+				<Route exact path='/OrderHistory' render={() =>
+                    <OrderHistory />
                 } />
 			</div>
 		)

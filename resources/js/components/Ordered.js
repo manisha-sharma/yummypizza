@@ -14,9 +14,15 @@ class Ordered extends Component {
         addedPizzas.forEach(element => {
             this.props.onRemoveFromCart(element);
         });
+		
+		// Read the cookie
+		//console.log(JSON.parse(Cookies.get('orderid'))); 
+		//let orderid = JSON.parse(Cookies.get('orderid'));
     }
 
     render () {
+		
+		//console.log(Cookies.get('orderid'));
         return (
 			<>
 			<div className="row">

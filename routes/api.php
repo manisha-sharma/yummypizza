@@ -15,3 +15,6 @@ use app\Http\Middleware\cors;
 Route::get('pizzas', 'PizzaController@index')->middleware('cors');
 Route::put('add/{pizza}', 'PizzaController@markAsAdded')->middleware('cors');
 Route::put('remove/{pizza}', 'PizzaController@unmarkAsAdded')->middleware('cors');
+Route::post('orderpizza', 'PizzaController@orderpizza')->middleware('cors');
+Route::post('checkuser', 'PizzaController@checkuser')->middleware('cors');
+Route::post('orderhistory', 'PizzaController@orderhistory')->middleware('cors');
