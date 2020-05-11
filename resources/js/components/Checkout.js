@@ -19,7 +19,7 @@ class Checkout extends Component {
    
         $.ajax({
 			type: 'POST',
-			url: '/api/orderpizza',
+			url: '/public/api/orderpizza',
 			dataType: 'json',
 			data: $('.checkoutform').serialize(),
 			context: this,
