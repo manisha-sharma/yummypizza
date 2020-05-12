@@ -28,7 +28,7 @@ export default class PizzaApp extends Component {
 
 	// grab posts from laravel backend
 	fetcher = () => {
-		fetch('/public/api/pizzas',  {
+		fetch('/api/pizzas',  {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -40,7 +40,7 @@ export default class PizzaApp extends Component {
     
     // add to cart
     onAddToCart = (item) => {
-        fetch('/public/api/add/' + item.id, {
+        fetch('/api/add/' + item.id, {
             method: 'PUT',
             body: JSON.stringify(item),
             headers : { 
@@ -54,7 +54,7 @@ export default class PizzaApp extends Component {
 
     // remove from cart
     onRemoveFromCart = (item) => {
-        fetch('/public/api/remove/' + item.id, {
+        fetch('/api/remove/' + item.id, {
             method: 'PUT',
             body: JSON.stringify(item),
             headers : { 
@@ -69,7 +69,7 @@ export default class PizzaApp extends Component {
 	
 	// remove from cart
     onRemoveFromCartItem = (id) => {
-        fetch('/public/api/remove/' + id, {
+        fetch('/api/remove/' + id, {
             method: 'PUT',
             body: JSON.stringify(id),
             headers : { 
