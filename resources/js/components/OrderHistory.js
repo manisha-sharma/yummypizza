@@ -16,7 +16,7 @@ class OrderHistory extends Component {
 	 
 	$.ajax({
 		type: 'POST',
-		url: '/api/orderhistory',
+		url: '/public/api/orderhistory',
 		dataType: 'json',
 		data:{'userid':JSON.parse(Cookies.get('userid'))},
 		context: this,
