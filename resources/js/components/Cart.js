@@ -146,7 +146,7 @@ class Cart extends Component {
 										<p className="lead">Your Cart is empty.</p>
 									<hr></hr>
 									<p className="lead">
-										<Link to='/' style={{ textDecoration: 'none' }} className="btn btn-primary btn-sm" role="button">Continue Shopping</Link>
+										<Link to='/public' style={{ textDecoration: 'none' }} className="btn btn-primary btn-sm" role="button">Continue Shopping</Link>
 									</p>
 								</div>
 							</div>

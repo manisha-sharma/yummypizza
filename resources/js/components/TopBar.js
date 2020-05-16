@@ -14,7 +14,7 @@ class Topbar extends Component {
 			<div>
 				<nav className="navbar navbar-expand-md navbar-dark bg-dark">
 					<div className="container">
-						<Link to='/' className="navbar-brand">YUMMY PIZZA</Link>
+						<Link to='/public' className="navbar-brand">YUMMY PIZZA</Link>
 
 						<div className="justify-content-end" id="navbarsExampleDefault">
 								<Link to='/login'  className="btn btn-primary btn-sm ml-3 changelabel">	
