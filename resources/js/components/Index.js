@@ -34,7 +34,7 @@ export default class PizzaApp extends Component {
                 'Accept': 'application/json'
             }
         })
-		.then(res => { alert('success'); return res.json(); })
+		.then(res => {return res.json(); })
         .then(data => this.setState({ pizzas: data }));
     }
     
@@ -86,7 +86,7 @@ export default class PizzaApp extends Component {
 		return (
 			<div>
                 <Topbar />
-                <Route exact path='/' render={() => 
+                <Route exact path='/public' render={() => 
                     <Home 
                         pizzas={this.state.pizzas} 
                         onAddToCart={this.onAddToCart}
