@@ -128,7 +128,7 @@ class Cart extends Component {
 							<div className="col mb-2">
 								<div className="row">
 									<div className="col-sm-12  col-md-6">
-										<Link to='/' className="btn btn-block btn-light">Continue Shopping</Link>
+										<Link to='/public' className="btn btn-block btn-light">Continue Shopping</Link>
 									</div>
 									<div className="col-sm-12 col-md-6 text-right">
 										 <Link to='/checkout' className="btn btn-lg btn-block btn-primary text-uppercase">Checkout</Link>
