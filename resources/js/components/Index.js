@@ -34,7 +34,7 @@ export default class PizzaApp extends Component {
                 'Accept': 'application/json'
             }
         })
-		.then(res => { return res.json(); })
+		.then(res => { alert('success'); return res.json(); })
         .then(data => this.setState({ pizzas: data }));
     }
     
