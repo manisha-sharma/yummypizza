@@ -8,9 +8,9 @@ The project is a simple shopping app that allows user to select items out of a p
 
 Download or clone the project to your system. Replace my dummy database credentials with yours in the .env file as follows:
 
-    DB_CONNECTION=pgsql
+    DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
-    DB_PORT=5432
+    DB_PORT=3306
     DB_DATABASE= <YOUR DATABASE NAME>
     DB_USERNAME= <YOUR DATABASE USERNAME>
     DB_PASSWORD= <YOUR DATABASE PASSWORD>
@@ -38,7 +38,7 @@ The preferred browser is Chrome and the app should be visible at
 
 ### Functionailty Visualization
 
-One can see the pizzas lined up in columns, number depending on response to the screen size. A checkout button at the bottom takes the user to the cart page confirming the total purchase. Placing the order through a button will give a message at the end and one can go back to the menu from there as well.
+One can see the pizzas lined up in columns, number depending on response to the screen size. A checkout button at the bottom takes the asks for basic user details and also confirming the total purchase. Placing the order through a button will give a message at the end and one can go back to the menu from there as well. There is Login button where you put username to see all past orders.
 
 ### Pitfalls
 
