@@ -40,7 +40,11 @@ class Checkout extends Component {
 		   return <Redirect to='/ordered'/>;
 		 }
 		// Read the cookie
-		console.log(JSON.parse(Cookies.get('cart_array')));
+		const datacookie = JSON.parse(Cookies.get('cart_array'));
+		let total = 0;
+		datacookie.forEach(element => {
+			total = parseFloat(element.total);
+        });
 		const addedPizzas = this.props.pizzas.filter(p => p.is_added);
 		//let passdata = addedPizzas;
 		console.log(addedPizzas);
@@ -72,7 +76,7 @@ class Checkout extends Component {
 						})}	
 						<li className="list-group-item d-flex justify-content-between">
 						  <span>Total (USD)</span>
-						  <strong>${tot.toFixed(2)}</strong>
+						  <strong>${total.toFixed(2)}</strong>
 						</li>
 					  </ul>
 					</div>
